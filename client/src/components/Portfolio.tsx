@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioItems } from '@/lib/constants';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 type FilterCategory = 'all' | 'consultoria' | 'proyectos' | 'formacion' | 'interim';
 
 const Portfolio = () => {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
 
   const filteredItems = activeFilter === 'all' 
@@ -40,12 +42,12 @@ const Portfolio = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm uppercase tracking-wider text-turquoise font-medium mb-3">Portfolio</h2>
+          <h2 className="text-sm uppercase tracking-wider text-turquoise font-medium mb-3">{t('portfolio.title')}</h2>
           <h3 className="font-playfair text-3xl md:text-4xl font-bold text-charcoal mb-6">
-            Proyectos destacados
+            {t('portfolio.subtitle')}
           </h3>
           <p className="text-charcoal-light">
-            Una selección de casos de éxito que demuestran mi enfoque para transformar espacios wellness y optimizar su funcionamiento.
+            {t('portfolio.description')}
           </p>
         </motion.div>
         
@@ -55,31 +57,31 @@ const Portfolio = () => {
               className={`px-4 py-2 ${activeFilter === 'all' ? 'bg-turquoise text-white' : 'bg-gray-100 text-charcoal hover:bg-turquoise/10'} rounded-full text-sm font-medium transition-colors`}
               onClick={() => setActiveFilter('all')}
             >
-              Todos
+              {t('portfolio.all')}
             </button>
             <button 
               className={`px-4 py-2 ${activeFilter === 'consultoria' ? 'bg-turquoise text-white' : 'bg-gray-100 text-charcoal hover:bg-turquoise/10'} rounded-full text-sm font-medium transition-colors`}
               onClick={() => setActiveFilter('consultoria')}
             >
-              Consultoría
+              {t('portfolio.consulting')}
             </button>
             <button 
               className={`px-4 py-2 ${activeFilter === 'proyectos' ? 'bg-turquoise text-white' : 'bg-gray-100 text-charcoal hover:bg-turquoise/10'} rounded-full text-sm font-medium transition-colors`}
               onClick={() => setActiveFilter('proyectos')}
             >
-              Proyectos
+              {t('portfolio.projects')}
             </button>
             <button 
               className={`px-4 py-2 ${activeFilter === 'formacion' ? 'bg-turquoise text-white' : 'bg-gray-100 text-charcoal hover:bg-turquoise/10'} rounded-full text-sm font-medium transition-colors`}
               onClick={() => setActiveFilter('formacion')}
             >
-              Formación
+              {t('portfolio.training')}
             </button>
             <button 
               className={`px-4 py-2 ${activeFilter === 'interim' ? 'bg-turquoise text-white' : 'bg-gray-100 text-charcoal hover:bg-turquoise/10'} rounded-full text-sm font-medium transition-colors`}
               onClick={() => setActiveFilter('interim')}
             >
-              Interim
+              {t('portfolio.interim')}
             </button>
           </div>
         </div>

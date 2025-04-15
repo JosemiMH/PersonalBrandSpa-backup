@@ -35,6 +35,7 @@ export type TranslationKey =
   | 'services.interim.description'
   | 'portfolio.title'
   | 'portfolio.subtitle'
+  | 'portfolio.description'
   | 'portfolio.all'
   | 'portfolio.consulting'
   | 'portfolio.projects'
@@ -96,6 +97,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     
     'services.title': 'Servicios',
     'services.subtitle': 'Soluciones Profesionales para el Sector Wellness',
+    'services.moreInfo': 'Más información',
     'services.strategy.title': 'Consultoría Estratégica',
     'services.strategy.description': 'Análisis y diagnóstico de operaciones, desarrollo de planes estratégicos y asesoramiento para optimizar la rentabilidad de tu negocio wellness.',
     'services.projects.title': 'Gestión de Proyectos',
@@ -107,6 +109,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     
     'portfolio.title': 'Portfolio',
     'portfolio.subtitle': 'Proyectos y Colaboraciones Destacadas',
+    'portfolio.description': 'Una selección de casos de éxito que demuestran mi enfoque para transformar espacios wellness y optimizar su funcionamiento.',
     'portfolio.all': 'Todos',
     'portfolio.consulting': 'Consultoría',
     'portfolio.projects': 'Proyectos',
@@ -172,6 +175,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     
     'services.title': 'Services',
     'services.subtitle': 'Professional Solutions for the Wellness Sector',
+    'services.moreInfo': 'More information',
     'services.strategy.title': 'Strategic Consulting',
     'services.strategy.description': 'Operations analysis and diagnosis, strategic plan development, and advisory services to optimize the profitability of your wellness business.',
     'services.projects.title': 'Project Management',
@@ -183,6 +187,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     
     'portfolio.title': 'Portfolio',
     'portfolio.subtitle': 'Featured Projects and Collaborations',
+    'portfolio.description': 'A selection of success cases that demonstrate my approach to transforming wellness spaces and optimizing their operation.',
     'portfolio.all': 'All',
     'portfolio.consulting': 'Consulting',
     'portfolio.projects': 'Projects',
