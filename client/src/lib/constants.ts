@@ -134,14 +134,14 @@ export const blogPosts = [
   {
     title: "Cómo optimizar la rentabilidad de tu spa sin sacrificar calidad",
     excerpt: "Estrategias probadas para mejorar tus márgenes manteniendo la excelencia en el servicio.",
-    image: "https://images.unsplash.com/photo-1554178286-db96c387bf87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     date: "28 Marzo, 2023",
     category: "Gestión"
   },
   {
     title: "5 claves para formar y retener talento en tu spa",
     excerpt: "Descubre cómo desarrollar un equipo profesional comprometido y minimizar la rotación.",
-    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     date: "15 Marzo, 2023",
     category: "Equipos"
   }
