@@ -24,6 +24,7 @@ export type TranslationKey =
   | 'about.speakingCaption'
   | 'services.title'
   | 'services.subtitle'
+  | 'services.moreInfo'
   | 'services.strategy.title'
   | 'services.strategy.description'
   | 'services.projects.title'

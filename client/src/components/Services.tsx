@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { services } from '@/lib/constants';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
+  const { t, language } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,12 +33,12 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm uppercase tracking-wider text-turquoise font-medium mb-3">Mis servicios</h2>
+          <h2 className="text-sm uppercase tracking-wider text-turquoise font-medium mb-3">{t('services.title')}</h2>
           <h3 className="font-playfair text-3xl md:text-4xl font-bold text-charcoal mb-6">
-            Expertise para elevar tu negocio de bienestar
+            {t('services.subtitle')}
           </h3>
           <p className="text-charcoal-light">
-            Ofrezco soluciones personalizadas para optimizar cada aspecto de tu negocio wellness, desde la consultoría estratégica hasta la implementación operativa.
+            {t('services.subtitle')}
           </p>
         </motion.div>
         
@@ -67,7 +69,7 @@ const Services = () => {
                 ))}
               </ul>
               <a href="#contact" className="text-turquoise hover:text-turquoise-dark font-medium text-sm">
-                Más información <i className="fas fa-arrow-right ml-1"></i>
+                {t('services.moreInfo')} <i className="fas fa-arrow-right ml-1"></i>
               </a>
             </motion.div>
           ))}
