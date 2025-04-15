@@ -31,7 +31,7 @@ const Hero = () => {
         >
           <h1 className="font-playfair text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-shadow mb-4">
             {language === 'es'
-              ? "Asesoro a hoteles en la transformación de su área de Wellness"
+              ? "Asesoro a hoteles en la transformación de su área Wellness"
               : "I advise hotels on transforming their Wellness area"}
           </h1>
           <p className="text-white text-base md:text-lg opacity-90 mb-3 border-l-4 border-white/70 pl-4 max-w-md">
