@@ -7,7 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Handle scroll event for sticky header
   useEffect(() => {
@@ -43,7 +43,11 @@ const Header = () => {
             />
             <div>
               <span className="font-playfair text-2xl font-bold text-turquoise block leading-tight">Eva Pérez</span>
-              <span className="hidden md:inline-block text-sage-dark text-sm font-light">Spa Manager & Consultant</span>
+              <span className="hidden md:inline-block text-sage-dark text-sm font-light">
+                {language === 'es' 
+                  ? "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos" 
+                  : "SPA & Wellness Project Manager – Revenue Optimization Specialist"}
+              </span>
             </div>
           </a>
           
