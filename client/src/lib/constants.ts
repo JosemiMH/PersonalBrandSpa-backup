@@ -26,49 +26,49 @@ export const services = [
   }
 ];
 
-// Portfolio items
+// Portfolio items basados en https://spaxion.com/centros/
 export const portfolioItems = [
   {
-    title: 'Spaxion Center Hotel Hesperia',
-    description: 'Consultoría estratégica para implementación de concepto Spaxion con incremento de ingresos del 45% en 6 meses.',
-    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    category: 'consultoria',
-    categoryName: 'Consultoría'
-  },
-  {
-    title: 'Spaxion Jardines de Nivaria',
-    description: 'Desarrollo e implementación de spa multiservicio con tratamientos exclusivos y zona termal personalizada.',
+    title: 'Spaxion Alameda',
+    description: 'Centro de hidroterapia y masajes con enfoque en el bienestar integral, ubicado en el centro comercial Alameda.',
     image: 'https://images.unsplash.com/photo-1519690889869-e705e59f72e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
     category: 'proyectos',
     categoryName: 'Proyectos'
   },
   {
-    title: 'Spaxion Victoria',
-    description: 'Gestión temporal durante renovación completa del centro wellness con modernización de instalaciones y formación de equipo.',
+    title: 'Spaxion Gran Plaza 2',
+    description: 'Centro de spa con servicios personalizados de masaje y tratamientos corporales con productos de alta calidad.',
     image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'proyectos',
+    categoryName: 'Proyectos'
+  },
+  {
+    title: 'Spaxion La Vaguada',
+    description: 'Centro especializado en tratamientos corporales y faciales con zona de relajación y circuito termal.',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
     category: 'interim',
     categoryName: 'Interim'
   },
   {
-    title: 'Formación Equipo Spaxion',
-    description: 'Desarrollo e implementación de programa formativo integral para terapeutas de todos los centros Spaxion.',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    category: 'formacion',
-    categoryName: 'Formación'
-  },
-  {
-    title: 'Spaxion Tulum Center',
-    description: 'Consultoría estratégica para el lanzamiento de nuevo centro wellness con enfoque en terapias ancestrales mexicanas.',
+    title: 'Spaxion Las Arenas',
+    description: 'Centro de bienestar en Valencia con amplia gama de tratamientos de hidroterapia y masajes terapéuticos.',
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
     category: 'consultoria',
     categoryName: 'Consultoría'
   },
   {
-    title: 'Spaxion Las Terrazas',
-    description: 'Diseño de concepto y operativa para centro wellness integrado en espacio natural con tratamientos sostenibles.',
+    title: 'Spaxion Islazul',
+    description: 'Centro wellness que ofrece variedad de masajes y tratamientos corporales con atención personalizada.',
     image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
     category: 'proyectos',
     categoryName: 'Proyectos'
+  },
+  {
+    title: 'Formación Equipo Spaxion',
+    description: 'Programa formativo integral para terapeutas de todos los centros Spaxion, enfocado en excelencia y calidad de servicio.',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'formacion',
+    categoryName: 'Formación'
   }
 ];
 

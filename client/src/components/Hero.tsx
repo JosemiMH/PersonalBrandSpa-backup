@@ -16,7 +16,7 @@ const Hero = () => {
         <img 
           src={heroImage} 
           alt={language === 'es' ? "Eva Pérez - Spa Manager" : "Eva Pérez - Spa Manager"} 
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${language === 'en' ? 'object-cover object-top' : 'object-cover'}`}
         />
       </div>
       
