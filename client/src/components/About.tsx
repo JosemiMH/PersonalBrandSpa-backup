@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import evaProfileImage from '../assets/eva-perez-profile.jpg';
 import evaSpeakingImage from '../assets/eva-perez-speaking.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
+import OptimizedImage from './OptimizedImage';
+import AnimatedCounter from './AnimatedCounter';
+import { ArrowRight } from 'lucide-react';
 
 const About = () => {
   const { t } = useLanguage();
@@ -18,18 +21,33 @@ const About = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
-                <img 
-                  src={evaProfileImage} 
-                  alt="Eva Pérez, Spa Manager y Consultora" 
-                  className="rounded-lg shadow-xl max-w-full h-auto hover-scale"
-                />
+                <motion.div 
+                  className="rounded-lg shadow-xl overflow-hidden"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <OptimizedImage 
+                    src={evaProfileImage} 
+                    alt="Eva Pérez, Spa Manager y Consultora" 
+                    className="w-full h-auto rounded-lg"
+                    objectFit="cover"
+                    priority={true}
+                  />
+                </motion.div>
               </div>
               <div className="md:col-span-2 mt-4">
-                <img 
-                  src={evaSpeakingImage} 
-                  alt="Eva Pérez dando una conferencia" 
-                  className="rounded-lg shadow-xl max-w-full h-auto hover-scale"
-                />
+                <motion.div 
+                  className="rounded-lg shadow-xl overflow-hidden"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <OptimizedImage 
+                    src={evaSpeakingImage} 
+                    alt="Eva Pérez dando una conferencia" 
+                    className="w-full h-auto rounded-lg"
+                    objectFit="cover"
+                  />
+                </motion.div>
                 <p className="text-sm text-center mt-2 text-charcoal-light italic">{t('about.speakingCaption')}</p>
               </div>
             </div>
@@ -59,42 +77,34 @@ const About = () => {
               {t('about.speaker')}
             </p>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">20+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.years')}</p>
-              </div>
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">50+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.projects')}</p>
-              </div>
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">30+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.conferences')}</p>
-              </div>
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">200+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.trained')}</p>
-              </div>
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">15+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.countries')}</p>
-              </div>
-              <div>
-                <div className="text-turquoise text-3xl font-playfair font-bold">5K+</div>
-                <p className="text-sm text-charcoal-light">{t('about.stats.attendees')}</p>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+              <AnimatedCounter end={20} suffix="+" label={t('about.stats.years')} />
+              <AnimatedCounter end={50} suffix="+" label={t('about.stats.projects')} />
+              <AnimatedCounter end={30} suffix="+" label={t('about.stats.conferences')} />
+              <AnimatedCounter end={200} suffix="+" label={t('about.stats.trained')} />
+              <AnimatedCounter end={15} suffix="+" label={t('about.stats.countries')} />
+              <AnimatedCounter end={5000} label={t('about.stats.attendees')} prefix="" suffix="+" />
             </div>
             
-            <div className="flex space-x-4">
-              <a href="#contact" className="text-turquoise font-medium hover:text-turquoise-dark transition-colors">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <motion.a 
+                href="#contact" 
+                className="bg-turquoise text-white px-6 py-3 rounded-lg inline-flex items-center justify-center hover:bg-turquoise-dark transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <span>{t('about.contact')}</span>
-                <i className="fas fa-arrow-right ml-2"></i>
-              </a>
-              <a href="#portfolio" className="text-charcoal-light font-medium hover:text-turquoise transition-colors">
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </motion.a>
+              <motion.a 
+                href="#portfolio" 
+                className="border border-turquoise text-turquoise px-6 py-3 rounded-lg inline-flex items-center justify-center hover:bg-turquoise hover:text-white transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <span>{t('about.portfolio')}</span>
-                <i className="fas fa-arrow-right ml-2"></i>
-              </a>
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </motion.a>
             </div>
           </motion.div>
         </div>

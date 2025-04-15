@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { blogPosts } from '@/lib/constants';
 import { useLanguage } from '@/contexts/LanguageContext';
+import OptimizedImage from './OptimizedImage';
+import InteractiveCard from './InteractiveCard';
+import { ArrowRight } from 'lucide-react';
 
 const Blog = () => {
   const { t } = useLanguage();
@@ -52,24 +55,33 @@ const Blog = () => {
           {blogPosts.map((post, index) => (
             <motion.div 
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover-scale"
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               variants={itemVariants}
+              whileHover={{ y: -5 }}
             >
-              <img 
-                src={post.image} 
-                alt={post.title} 
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative h-48 overflow-hidden">
+                <OptimizedImage 
+                  src={post.image} 
+                  alt={post.title} 
+                  className="w-full h-full"
+                  objectFit="cover"
+                  priority={index < 3} // Cargar prioritariamente los primeros 3 posts
+                />
+              </div>
               <div className="p-6">
                 <div className="flex items-center mb-3">
                   <span className="text-xs text-gray-500">{post.date}</span>
                   <span className="mx-2 text-gray-300">•</span>
                   <span className="text-xs bg-turquoise/10 text-turquoise px-2 py-1 rounded">{post.category}</span>
                 </div>
-                <h4 className="font-playfair text-xl font-bold text-charcoal mb-2">{post.title}</h4>
+                <h4 className="font-playfair text-xl font-bold text-charcoal mb-2 group-hover:text-turquoise transition-colors">{post.title}</h4>
                 <p className="text-charcoal-light text-sm mb-4">{post.excerpt}</p>
-                <a href="#" className="text-turquoise hover:text-turquoise-dark font-medium text-sm">
-                  {t('blog.readArticle')} <i className="fas fa-arrow-right ml-1"></i>
+                <a 
+                  href="#" 
+                  className="text-turquoise hover:text-turquoise-dark font-medium text-sm inline-flex items-center transition-all hover:translate-x-1"
+                >
+                  {t('blog.readArticle')} 
+                  <ArrowRight className="ml-1 h-4 w-4" />
                 </a>
               </div>
             </motion.div>
@@ -77,9 +89,14 @@ const Blog = () => {
         </motion.div>
         
         <div className="text-center mt-12">
-          <a href="#" className="inline-block px-8 py-3 border border-turquoise text-turquoise hover:bg-turquoise hover:text-white transition-colors rounded font-medium">
+          <motion.a 
+            href="#" 
+            className="inline-block px-8 py-3 border border-turquoise text-turquoise hover:bg-turquoise hover:text-white transition-all duration-300 rounded font-medium"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             {t('blog.viewAll')}
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

@@ -28,6 +28,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <Router />
+        <CookieConsent />
         <Toaster />
       </LanguageProvider>
     </QueryClientProvider>
