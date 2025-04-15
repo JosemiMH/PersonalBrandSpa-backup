@@ -45,8 +45,8 @@ const Header = () => {
               <span className="font-playfair text-2xl font-bold text-turquoise block leading-tight">Eva Pérez</span>
               <span className="hidden md:inline-block text-sage-dark text-sm font-light">
                 {language === 'es' 
-                  ? "Experta en Estrategia de Hospitalidad y Bienestar de Lujo" 
-                  : "Expert in Luxury Hospitality & Wellness Strategy"}
+                  ? "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos" 
+                  : "SPA & Wellness Project Manager – Revenue Optimization Specialist"}
               </span>
             </div>
           </a>

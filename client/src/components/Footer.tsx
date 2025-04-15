@@ -133,10 +133,9 @@ const Footer = () => {
         <hr className="border-gray-700 mb-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            <p>&copy; {currentYear} Eva Pérez. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
-            <p className="mt-1">{language === 'es' ? 'Sitio web:' : 'Website:'} <a href="https://wellnessbyeperez.es" className="text-turquoise hover:text-turquoise-light transition-colors">wellnessbyeperez.es</a></p>
-          </div>
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; {currentYear} Eva Pérez. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
+          </p>
           <div className="flex space-x-6">
             <a href="/privacy" className="text-gray-400 hover:text-turquoise text-sm transition-colors">
               {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
