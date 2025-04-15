@@ -1,85 +1,151 @@
 import { Link } from 'wouter';
+import { FaLinkedinIn, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t, language } = useLanguage();
   
   return (
     <footer className="bg-charcoal-dark text-white pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="font-playfair text-2xl font-bold text-white mb-4">Eva Pérez</div>
             <p className="text-gray-400 mb-6">
-              Más de 20 años transformando espacios de bienestar en experiencias memorables y rentables.
+              {language === 'es' 
+                ? 'Más de 20 años transformando espacios de bienestar en experiencias memorables y rentables.'
+                : 'Over 20 years transforming wellness spaces into memorable and profitable experiences.'}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-turquoise transition-colors">
-                <i className="fab fa-linkedin-in"></i>
+              <a 
+                href="https://www.linkedin.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-turquoise transition-colors w-10 h-10 flex items-center justify-center bg-charcoal rounded-full hover:bg-opacity-80"
+              >
+                <FaLinkedinIn size={18} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-turquoise transition-colors">
-                <i className="fab fa-instagram"></i>
+              <a 
+                href="https://www.instagram.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-turquoise transition-colors w-10 h-10 flex items-center justify-center bg-charcoal rounded-full hover:bg-opacity-80"
+              >
+                <FaInstagram size={18} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-turquoise transition-colors">
-                <i className="fab fa-twitter"></i>
+              <a 
+                href="https://twitter.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-turquoise transition-colors w-10 h-10 flex items-center justify-center bg-charcoal rounded-full hover:bg-opacity-80"
+              >
+                <FaTwitter size={18} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-turquoise transition-colors">
-                <i className="fab fa-youtube"></i>
+              <a 
+                href="https://www.youtube.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-turquoise transition-colors w-10 h-10 flex items-center justify-center bg-charcoal rounded-full hover:bg-opacity-80"
+              >
+                <FaYoutube size={18} />
               </a>
             </div>
-          </div>
+          </motion.div>
           
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">Enlaces rápidos</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h4 className="text-lg font-medium text-white mb-4">
+              {language === 'es' ? 'Enlaces rápidos' : 'Quick Links'}
+            </h4>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-gray-400 hover:text-turquoise transition-colors">Sobre mí</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">Servicios</a></li>
-              <li><a href="#portfolio" className="text-gray-400 hover:text-turquoise transition-colors">Portfolio</a></li>
-              <li><a href="#testimonials" className="text-gray-400 hover:text-turquoise transition-colors">Testimonios</a></li>
-              <li><a href="#blog" className="text-gray-400 hover:text-turquoise transition-colors">Blog</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-turquoise transition-colors">Contacto</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.about')}</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.services')}</a></li>
+              <li><a href="#portfolio" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.portfolio')}</a></li>
+              <li><a href="#testimonials" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.testimonials')}</a></li>
+              <li><a href="#blog" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.blog')}</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-turquoise transition-colors">{t('header.contact')}</a></li>
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">Servicios</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h4 className="text-lg font-medium text-white mb-4">
+              {language === 'es' ? 'Servicios' : 'Services'}
+            </h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-turquoise transition-colors">Consultoría Estratégica</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-turquoise transition-colors">Gestión de Proyectos</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-turquoise transition-colors">Formación y Desarrollo</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-turquoise transition-colors">Interim Management</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-turquoise transition-colors">Mentoring</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">{t('services.strategy.title')}</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">{t('services.projects.title')}</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">{t('services.training.title')}</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">{t('services.interim.title')}</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-turquoise transition-colors">
+                {language === 'es' ? 'Mentoring' : 'Mentoring'}
+              </a></li>
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">Contacto</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <h4 className="text-lg font-medium text-white mb-4">
+              {language === 'es' ? 'Contacto' : 'Contact'}
+            </h4>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <i className="fas fa-envelope text-turquoise mt-1 mr-2"></i>
-                <a href="mailto:contacto@evaperez.com" className="text-gray-400 hover:text-turquoise transition-colors">contacto@evaperez.com</a>
+                <FaEnvelope className="text-turquoise mt-1 mr-2" />
+                <a href="mailto:eperez@asetrabalnearios.com" className="text-gray-400 hover:text-turquoise transition-colors">
+                  eperez@asetrabalnearios.com
+                </a>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-phone text-turquoise mt-1 mr-2"></i>
-                <a href="tel:+34600000000" className="text-gray-400 hover:text-turquoise transition-colors">+34 600 000 000</a>
+                <FaPhone className="text-turquoise mt-1 mr-2" />
+                <a href="tel:+34676462991" className="text-gray-400 hover:text-turquoise transition-colors">
+                  +34 676 462 991
+                </a>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-map-marker-alt text-turquoise mt-1 mr-2"></i>
-                <span className="text-gray-400">Barcelona, España</span>
+                <FaMapMarkerAlt className="text-turquoise mt-1 mr-2" />
+                <span className="text-gray-400">
+                  {language === 'es' ? 'Madrid, España' : 'Madrid, Spain'}
+                </span>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
         
         <hr className="border-gray-700 mb-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Eva Pérez. Todos los derechos reservados.
+            &copy; {currentYear} Eva Pérez. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-turquoise text-sm transition-colors">Política de Privacidad</a>
-            <a href="#" className="text-gray-400 hover:text-turquoise text-sm transition-colors">Términos y Condiciones</a>
-            <a href="#" className="text-gray-400 hover:text-turquoise text-sm transition-colors">Cookies</a>
+            <a href="/privacy" className="text-gray-400 hover:text-turquoise text-sm transition-colors">
+              {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
+            </a>
+            <a href="/terms" className="text-gray-400 hover:text-turquoise text-sm transition-colors">
+              {language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}
+            </a>
+            <a href="/cookies" className="text-gray-400 hover:text-turquoise text-sm transition-colors">
+              {language === 'es' ? 'Cookies' : 'Cookies'}
+            </a>
           </div>
         </div>
       </div>
