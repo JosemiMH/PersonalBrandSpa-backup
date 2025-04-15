@@ -34,18 +34,6 @@ const About = () => {
                     priority={true}
                   />
                 </motion.div>
-                <div className="bg-white p-4 shadow-md rounded-lg -mt-2 mx-2 relative z-10 border-t-4 border-turquoise">
-                  <p className="text-sm text-center font-medium text-charcoal mb-1">
-                    {language === 'es' 
-                      ? "Experta en Estrategia de Hospitalidad y Bienestar de Lujo" 
-                      : "Expert in Luxury Hospitality & Wellness Strategy"}
-                  </p>
-                  <p className="text-xs text-center text-charcoal-light">
-                    {language === 'es' 
-                      ? "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos" 
-                      : "SPA & Wellness Project Manager – Revenue Optimization Specialist"}
-                  </p>
-                </div>
               </div>
               <div className="md:col-span-2 mt-4">
                 <motion.div 
