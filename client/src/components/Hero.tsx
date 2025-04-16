@@ -19,7 +19,7 @@ const Hero = () => {
             alt={language === 'es' 
               ? "Eva Pérez - Experta en Estrategia de Hospitalidad y Bienestar de Lujo" 
               : "Eva Pérez - Expert in Luxury Hospitality & Wellness Strategy"} 
-            className={`w-full h-full object-cover ${language === 'en' ? 'object-[50%_15%]' : 'object-[50%_40%]'}`}
+            className={`w-full h-full object-cover ${language === 'en' ? 'object-[50%_0%]' : 'object-[50%_40%]'}`}
           />
         </div>
       </div>
