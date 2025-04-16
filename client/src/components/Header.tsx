@@ -29,8 +29,8 @@ const Header = () => {
   return (
     <header 
       id="navbar"
-      className={`fixed w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300 ${
-        scrolled ? 'py-2' : 'py-4'
+      className={`fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300 ${
+        scrolled ? 'py-2' : 'py-3'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ const Header = () => {
             />
             <div>
               <span className="font-playfair text-2xl font-bold text-turquoise block leading-tight">Eva Pérez</span>
-              <span className="hidden md:inline-block text-sage-dark text-sm font-light">
+              <span className="hidden md:inline-block text-sage-dark text-xs font-light max-w-xs">
                 {language === 'es' 
                   ? "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos" 
                   : "SPA & Wellness Project Manager – Revenue Optimization Specialist"}
