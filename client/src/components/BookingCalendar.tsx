@@ -17,7 +17,7 @@ import { es, enUS } from "date-fns/locale";
 import { apiRequest } from "@/lib/queryClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from 'framer-motion';
-import { formatInTimeZone } from 'date-fns-tz';
+
 
 interface AvailableSlot {
   start: Date;
@@ -141,9 +141,9 @@ const BookingCalendar = () => {
       };
       
       const result = await apiRequest<{ success: boolean; message: string }>({
-        url: '/api/appointments',
+        path: '/api/appointments',
         method: 'POST',
-        data: appointmentData,
+        body: appointmentData,
       });
       
       if (result.success) {
