@@ -21,8 +21,8 @@ const ChatBot = () => {
   // Al iniciar, cargar mensaje de bienvenida
   useEffect(() => {
     const welcomeMessage = language === 'es' 
-      ? '¡Hola! Soy el asistente virtual de Eva. ¿En qué puedo ayudarte hoy?'
-      : 'Hello! I am Eva\'s virtual assistant. How can I help you today?';
+      ? '¡Hola! Soy el asistente virtual de Eva Pérez, experta en estrategia wellness para hoteles. Puedo ayudarte con consultas sobre gestión de áreas de bienestar, optimización de ingresos en SPAs, formación de equipos o implementación de proyectos wellness. ¿En qué estás interesado?'
+      : 'Hello! I am Eva Pérez\'s virtual assistant, an expert in wellness strategy for hotels. I can help you with queries about wellness area management, SPA revenue optimization, team training, or wellness project implementation. What are you interested in?';
     
     setMessages([
       { role: 'assistant', content: welcomeMessage }
@@ -97,27 +97,50 @@ const ChatBot = () => {
   return (
     <>
       {/* Botón para abrir el chat */}
-      <motion.button 
-        className="fixed bottom-6 right-6 z-50 bg-turquoise text-white rounded-full p-4 shadow-lg"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(true)}
-        aria-label={language === 'es' ? 'Abrir chat' : 'Open chat'}
+      <motion.div 
+        className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
+        {!isOpen && (
+          <div className="bg-white rounded-lg shadow-lg p-3 mb-3 max-w-[200px] text-sm">
+            <p className="text-charcoal font-medium">
+              {language === 'es' 
+                ? '¿Necesitas ayuda con tu proyecto wellness?' 
+                : 'Need help with your wellness project?'}
+            </p>
+            <button 
+              className="text-turquoise text-xs mt-1 hover:underline"
+              onClick={() => setIsOpen(true)}
+            >
+              {language === 'es' ? 'Chatea conmigo' : 'Chat with me'}
+            </button>
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white transform rotate-45"></div>
+          </div>
+        )}
+        <motion.button 
+          className="bg-turquoise text-white rounded-full p-4 shadow-lg flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsOpen(true)}
+          aria-label={language === 'es' ? 'Abrir chat' : 'Open chat'}
         >
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-      </motion.button>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </motion.button>
+      </motion.div>
 
       {/* Ventana de chat */}
       <AnimatePresence>
@@ -131,7 +154,22 @@ const ChatBot = () => {
             >
               {/* Cabecera del chat */}
               <div className="bg-turquoise text-white p-4 rounded-t-lg flex justify-between items-center">
-                <h3 className="font-medium">{chatTitle}</h3>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white">{chatTitle}</h3>
+                    <p className="text-white/70 text-xs">
+                      {language === 'es' 
+                        ? 'Experta en estrategia wellness'
+                        : 'Wellness strategy expert'}
+                    </p>
+                  </div>
+                </div>
                 <button 
                   onClick={() => setIsOpen(false)} 
                   className="text-white hover:text-white/80 transition-colors"
@@ -180,6 +218,30 @@ const ChatBot = () => {
                 )}
               </div>
               
+              {/* Sugerencias de preguntas */}
+              <div className="px-4 pt-2 pb-0">
+                <p className="text-xs text-gray-500 mb-2">
+                  {language === 'es' 
+                    ? 'Puedes preguntar sobre:'
+                    : 'You can ask about:'}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {[
+                    language === 'es' ? '¿Cómo aumentar ingresos en mi spa?' : 'How to increase spa revenue?',
+                    language === 'es' ? '¿Qué tendencias wellness hay?' : 'Current wellness trends?',
+                    language === 'es' ? '¿Cómo formar a mi equipo?' : 'How to train my team?'
+                  ].map((suggestion, i) => (
+                    <button
+                      key={i}
+                      className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 py-1 rounded-full transition-colors"
+                      onClick={() => setInput(suggestion)}
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Área de entrada de texto */}
               <div className="p-4 border-t border-gray-200">
                 <div className="flex">
@@ -203,6 +265,13 @@ const ChatBot = () => {
                     </svg>
                     <span className="hidden md:inline">{sendButtonText}</span>
                   </Button>
+                </div>
+                <div className="mt-2 text-xs text-center text-gray-500">
+                  <p>
+                    {language === 'es'
+                      ? 'Potenciado por IA para información general. Para consultas específicas, contacta directamente con Eva.'
+                      : 'Powered by AI for general information. For specific inquiries, contact Eva directly.'}
+                  </p>
                 </div>
               </div>
             </motion.div>
