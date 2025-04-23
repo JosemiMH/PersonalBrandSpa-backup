@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { contactSchema, newsletterSchema } from "@shared/schema";
 import { z } from "zod";
 import { ZodError } from "zod-validation-error";
+import { handleChatRequest } from "./api/chat";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form endpoint
