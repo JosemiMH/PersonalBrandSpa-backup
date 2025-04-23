@@ -57,11 +57,12 @@ export async function handleChatRequest(req: Request, res: Response) {
       usage: chatCompletion.usage,
     });
 
-  } catch (error) {
+  } catch (err) {
+    const error = err as Error;
     console.error('Error en la API de chat:', error);
     res.status(500).json({ 
       error: 'Error al procesar la solicitud del chat',
-      details: error.message 
+      details: error.message || 'Error desconocido'
     });
   }
 }

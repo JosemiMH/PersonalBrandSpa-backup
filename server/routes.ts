@@ -61,6 +61,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Chatbot API endpoint
+  app.post('/api/chat', handleChatRequest);
+
   // Create HTTP server
   const httpServer = createServer(app);
 

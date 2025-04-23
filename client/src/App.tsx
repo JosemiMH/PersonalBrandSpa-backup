@@ -9,6 +9,7 @@ import Terms from "@/pages/Terms";
 import Cookies from "@/pages/Cookies";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import CookieConsent from "@/components/CookieConsent";
+import ChatBot from "@/components/ChatBot";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <Router />
+        <ChatBot />
         <CookieConsent />
         <Toaster />
       </LanguageProvider>
