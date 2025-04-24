@@ -56,12 +56,12 @@ const Header = () => {
               <span className={`font-playfair font-bold text-turquoise block leading-tight ${
                 isMobile ? 'text-base' : isTablet ? 'text-xl' : 'text-2xl'
               }`}>Eva Pérez</span>
-              <span className={`text-sage-dark font-light max-w-xs line-clamp-1 ${
-                isMobile ? 'text-[10px]' : 'text-xs'
+              <span className={`text-sage-dark font-light line-clamp-1 ${
+                isMobile ? 'text-[9px] max-w-[200px]' : 'text-xs max-w-xs'
               }`}>
                 {language === 'es' 
-                  ? "Gerente de Proyectos SPA & Wellness" 
-                  : "SPA & Wellness Project Manager"}
+                  ? "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos" 
+                  : "SPA & Wellness Project Manager – Revenue Optimization Specialist"}
               </span>
             </div>
           </a>
