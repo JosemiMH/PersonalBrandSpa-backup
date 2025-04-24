@@ -97,7 +97,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Spaxion La Vaguada',
+    title: {
+      es: 'Spaxion La Vaguada',
+      en: 'Spaxion La Vaguada'
+    },
     description: {
       es: 'Gestión interina durante 6 meses del centro en La Vaguada, Madrid. Implementación de cambios estructurales y entrenamiento del nuevo equipo directivo.',
       en: 'Interim management for 6 months at the center in La Vaguada, Madrid. Implementation of structural changes and training of the new management team.'
@@ -110,7 +113,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Spaxion Las Arenas',
+    title: {
+      es: 'Spaxion Las Arenas',
+      en: 'Spaxion Las Arenas'
+    },
     description: {
       es: 'Consultoría en el centro de Valencia para optimizar protocolos de tratamiento y mejorar la eficiencia operativa, resultando en un aumento de ingresos del 28%.',
       en: 'Consulting at the Valencia center to optimize treatment protocols and improve operational efficiency, resulting in a 28% revenue increase.'
@@ -123,7 +129,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Spaxion Islazul',
+    title: {
+      es: 'Spaxion Islazul',
+      en: 'Spaxion Islazul'
+    },
     description: {
       es: 'Proyecto de remodelación y ampliación del centro en CC Islazul, Madrid. Diseño de nuevos espacios y selección de equipamiento wellness avanzado.',
       en: 'Remodeling and expansion project of the center at CC Islazul, Madrid. Design of new spaces and selection of advanced wellness equipment.'
@@ -136,7 +145,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Programa de Formación Spaxion',
+    title: {
+      es: 'Programa de Formación Spaxion',
+      en: 'Spaxion Training Program'
+    },
     description: {
       es: 'Desarrollo e implementación de programa formativo integral para terapeutas de todos los centros Spaxion, con énfasis en calidad de servicio y técnicas avanzadas.',
       en: 'Development and implementation of comprehensive training program for therapists across all Spaxion centers, emphasizing service quality and advanced techniques.'
@@ -149,7 +161,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Spaxion Bonaire',
+    title: {
+      es: 'Spaxion Bonaire',
+      en: 'Spaxion Bonaire'
+    },
     description: {
       es: 'Proyecto de apertura del nuevo centro Spaxion en CC Bonaire, Valencia. Diseño del espacio, selección de equipamiento y formación del equipo inicial.',
       en: 'Opening project for the new Spaxion center at CC Bonaire, Valencia. Space design, equipment selection and training of the initial team.'
@@ -162,7 +177,10 @@ export const portfolioItems = [
     }
   },
   {
-    title: 'Formación de Directores Spaxion',
+    title: {
+      es: 'Formación de Directores Spaxion',
+      en: 'Spaxion Directors Training'
+    },
     description: {
       es: 'Programa especializado para directores de centros Spaxion, enfocado en liderazgo, gestión de equipos y optimización de recursos.',
       en: 'Specialized program for Spaxion center directors, focused on leadership, team management and resource optimization.'
