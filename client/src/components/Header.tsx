@@ -59,16 +59,10 @@ const Header = () => {
               <span className={`text-sage-dark font-light ${
                 isMobile ? 'text-[8px] whitespace-normal leading-tight max-w-[220px]' : isTablet ? 'text-xs max-w-[300px]' : 'text-xs max-w-xs'
               }`}>
-                {language === 'es' 
-                  ? <div className="flex flex-col">
-                      <span>Gerente de Proyectos SPA & Wellness</span>
-                      <span>Especialista en Optimización de Ingresos</span>
-                    </div>
-                  : <div className="flex flex-col">
-                      <span>SPA & Wellness Project Manager</span>
-                      <span>Revenue Optimization Specialist</span>
-                    </div>
-                }
+                <div className="flex flex-col">
+                  <span>{language === 'es' ? 'Gerente de Proyectos SPA & Wellness' : 'SPA & Wellness Project Manager'}</span>
+                  <span>{language === 'es' ? 'Especialista en Optimización de Ingresos' : 'Revenue Optimization Specialist'}</span>
+                </div>
               </span>
             </div>
           </a>
