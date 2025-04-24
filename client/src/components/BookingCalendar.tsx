@@ -257,20 +257,7 @@ const BookingCalendar = () => {
                           ? 'Los fines de semana no están disponibles para reservas.' 
                           : 'Weekends are not available for bookings.'}
                       </p>
-                      <div className="flex justify-end w-full">
-                        <Link href="/">
-                          <Button 
-                            variant="outline" 
-                            className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
-                            size="sm"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="m15 18-6-6 6-6"/>
-                            </svg>
-                            {language === 'es' ? 'Volver al inicio' : 'Back to home'}
-                          </Button>
-                        </Link>
-                      </div>
+
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -330,18 +317,7 @@ const BookingCalendar = () => {
                       >
                         {language === 'es' ? 'Volver' : 'Back'}
                       </Button>
-                      <Link href="/">
-                        <Button 
-                          variant="outline" 
-                          className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
-                          size="sm"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m15 18-6-6 6-6"/>
-                          </svg>
-                          {language === 'es' ? 'Volver al inicio' : 'Back to home'}
-                        </Button>
-                      </Link>
+
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -526,19 +502,7 @@ const BookingCalendar = () => {
                             >
                               {language === 'es' ? 'Volver' : 'Back'}
                             </Button>
-                            <Link href="/">
-                              <Button 
-                                type="button"
-                                variant="outline" 
-                                className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
-                                size="sm"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                  <path d="m15 18-6-6 6-6"/>
-                                </svg>
-                                {language === 'es' ? 'Volver al inicio' : 'Back to home'}
-                              </Button>
-                            </Link>
+
                             <div className="ml-auto">
                               <Button 
                                 type="submit" 

@@ -10,6 +10,7 @@ import Cookies from "@/pages/Cookies";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import CookieConsent from "@/components/CookieConsent";
 import ChatBot from "@/components/ChatBot";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Router />
         <ChatBot />
         <CookieConsent />
+        <ScrollToTop />
         <Toaster />
       </LanguageProvider>
     </QueryClientProvider>
