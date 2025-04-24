@@ -17,6 +17,7 @@ import { es, enUS } from "date-fns/locale";
 import { apiRequest } from "@/lib/queryClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'wouter';
 
 
 interface AvailableSlot {
@@ -250,12 +251,26 @@ const BookingCalendar = () => {
                         toDate={addDays(new Date(), 60)}
                       />
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="flex flex-col gap-4">
                       <p className="text-sm text-gray-500">
                         {language === 'es' 
                           ? 'Los fines de semana no están disponibles para reservas.' 
                           : 'Weekends are not available for bookings.'}
                       </p>
+                      <div className="flex justify-end w-full">
+                        <Link href="/">
+                          <Button 
+                            variant="outline" 
+                            className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
+                            size="sm"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m15 18-6-6 6-6"/>
+                            </svg>
+                            {language === 'es' ? 'Volver al inicio' : 'Back to home'}
+                          </Button>
+                        </Link>
+                      </div>
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -315,6 +330,18 @@ const BookingCalendar = () => {
                       >
                         {language === 'es' ? 'Volver' : 'Back'}
                       </Button>
+                      <Link href="/">
+                        <Button 
+                          variant="outline" 
+                          className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
+                          size="sm"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m15 18-6-6 6-6"/>
+                          </svg>
+                          {language === 'es' ? 'Volver al inicio' : 'Back to home'}
+                        </Button>
+                      </Link>
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -491,7 +518,7 @@ const BookingCalendar = () => {
                             )}
                           />
                           
-                          <div className="flex justify-between pt-4">
+                          <div className="flex gap-2 pt-4">
                             <Button 
                               type="button"
                               variant="outline" 
@@ -499,20 +526,35 @@ const BookingCalendar = () => {
                             >
                               {language === 'es' ? 'Volver' : 'Back'}
                             </Button>
-                            <Button 
-                              type="submit" 
-                              className="bg-turquoise hover:bg-turquoise/90"
-                              disabled={submitLoading}
-                            >
-                              {submitLoading ? (
-                                <>
-                                  <span className="animate-spin mr-2">⏳</span>
-                                  {language === 'es' ? 'Enviando...' : 'Sending...'}
-                                </>
-                              ) : (
-                                language === 'es' ? 'Confirmar reserva' : 'Confirm booking'
-                              )}
-                            </Button>
+                            <Link href="/">
+                              <Button 
+                                type="button"
+                                variant="outline" 
+                                className="flex items-center gap-2 text-turquoise border-turquoise hover:bg-turquoise/10"
+                                size="sm"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="m15 18-6-6 6-6"/>
+                                </svg>
+                                {language === 'es' ? 'Volver al inicio' : 'Back to home'}
+                              </Button>
+                            </Link>
+                            <div className="ml-auto">
+                              <Button 
+                                type="submit" 
+                                className="bg-turquoise hover:bg-turquoise/90"
+                                disabled={submitLoading}
+                              >
+                                {submitLoading ? (
+                                  <>
+                                    <span className="animate-spin mr-2">⏳</span>
+                                    {language === 'es' ? 'Enviando...' : 'Sending...'}
+                                  </>
+                                ) : (
+                                  language === 'es' ? 'Confirmar reserva' : 'Confirm booking'
+                                )}
+                              </Button>
+                            </div>
                           </div>
                         </form>
                       </Form>
