@@ -110,14 +110,7 @@ const Header = () => {
                 >
                   {t('header.blog')}
                 </a>
-                <Link 
-                  href="/booking" 
-                  className={`text-turquoise hover:text-turquoise-dark transition-colors ${
-                    isTablet ? 'text-xs px-2' : 'text-sm px-3'
-                  }`}
-                >
-                  {language === 'es' ? 'Reservar' : 'Book'}
-                </Link>
+
                 <a 
                   href="#contact" 
                   className={`bg-turquoise text-white rounded hover:bg-turquoise-dark transition-colors ${
@@ -196,15 +189,7 @@ const Header = () => {
           >
             {t('header.blog')}
           </a>
-          <Link 
-            href="/booking" 
-            className={`block text-turquoise font-medium border-b border-gray-100 active:bg-gray-50 transition-colors ${
-              isMobile ? 'py-2 text-sm' : 'py-3'
-            }`} 
-            onClick={toggleMobileMenu}
-          >
-            {language === 'es' ? 'Reservar' : 'Book'}
-          </Link>
+
           <a 
             href="#contact" 
             className={`block text-turquoise font-medium border-b border-gray-100 active:bg-gray-50 transition-colors ${

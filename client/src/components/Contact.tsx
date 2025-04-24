@@ -9,9 +9,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BookingCalendar from '@/components/BookingCalendar';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,7 +67,11 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      await apiRequest('POST', '/api/contact', data);
+      await apiRequest({
+        path: '/api/contact',
+        method: 'POST',
+        body: data
+      });
       
       toast({
         title: language === 'es' ? "Mensaje enviado" : "Message sent",
@@ -89,7 +95,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="py-16 md:py-24 bg-white">
+    <div id="contact" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12">
           <motion.div 
@@ -170,162 +176,191 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white p-8 rounded-lg shadow-md">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="block text-charcoal font-medium mb-2">
-                          {language === 'es' ? 'Nombre' : 'Name'}
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder={language === 'es' ? "Tu nombre" : "Your name"} 
-                            className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="block text-charcoal font-medium mb-2">Email</FormLabel>
-                        <FormControl>
-                          <Input 
-                            type="email" 
-                            placeholder={language === 'es' ? "tu@email.com" : "your@email.com"}
-                            className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            <Tabs defaultValue="message" className="bg-white rounded-lg shadow-md">
+              <div className="p-4 border-b">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="message" className="text-base">
+                    {language === 'es' ? 'Enviar mensaje' : 'Send message'}
+                  </TabsTrigger>
+                  <TabsTrigger value="booking" className="text-base">
+                    {language === 'es' ? 'Reservar consulta' : 'Book consultation'}
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+              
+              <TabsContent value="message" className="p-6">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="block text-charcoal font-medium mb-2">
+                              {language === 'es' ? 'Nombre' : 'Name'}
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder={language === 'es' ? "Tu nombre" : "Your name"} 
+                                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="block text-charcoal font-medium mb-2">Email</FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="email" 
+                                placeholder={language === 'es' ? "tu@email.com" : "your@email.com"}
+                                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem className="mb-6">
+                          <FormLabel className="block text-charcoal font-medium mb-2">
+                            {language === 'es' ? 'Empresa/Organización' : 'Company/Organization'}
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder={language === 'es' ? "Nombre de tu empresa" : "Your company name"} 
+                              className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="service"
+                      render={({ field }) => (
+                        <FormItem className="mb-6">
+                          <FormLabel className="block text-charcoal font-medium mb-2">
+                            {language === 'es' ? 'Servicio de interés' : 'Service of interest'}
+                          </FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors">
+                                <SelectValue placeholder={language === 'es' ? "Selecciona un servicio" : "Select a service"} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="consultoria">
+                                {language === 'es' ? 'Consultoría Estratégica' : 'Strategic Consulting'}
+                              </SelectItem>
+                              <SelectItem value="proyectos">
+                                {language === 'es' ? 'Gestión de Proyectos' : 'Project Management'}
+                              </SelectItem>
+                              <SelectItem value="formacion">
+                                {language === 'es' ? 'Formación y Desarrollo' : 'Training and Development'}
+                              </SelectItem>
+                              <SelectItem value="interim">
+                                {language === 'es' ? 'Interim Management' : 'Interim Management'}
+                              </SelectItem>
+                              <SelectItem value="otro">
+                                {language === 'es' ? 'Otro' : 'Other'}
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem className="mb-6">
+                          <FormLabel className="block text-charcoal font-medium mb-2">
+                            {language === 'es' ? 'Mensaje' : 'Message'}
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder={language === 'es' ? "Cuéntame sobre tu proyecto o necesidad" : "Tell me about your project or need"} 
+                              className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
+                              rows={4} 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="privacy"
+                      render={({ field }) => (
+                        <FormItem className="flex items-start mb-6">
+                          <FormControl>
+                            <Checkbox 
+                              checked={field.value} 
+                              onCheckedChange={field.onChange}
+                              className="mt-1 mr-2" 
+                            />
+                          </FormControl>
+                          <div className="space-y-1 leading-none">
+                            <FormLabel className="text-sm text-charcoal-light">
+                              {language === 'es' 
+                                ? 'Acepto la política de privacidad y el tratamiento de mis datos para recibir comunicaciones.'
+                                : 'I accept the privacy policy and the processing of my data to receive communications.'}
+                            </FormLabel>
+                            <FormMessage />
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-turquoise hover:bg-turquoise-dark text-white font-medium py-3 rounded transition-colors"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting 
+                        ? (language === 'es' ? 'Enviando...' : 'Sending...') 
+                        : (language === 'es' ? 'Enviar mensaje' : 'Send message')}
+                    </Button>
+                  </form>
+                </Form>
+              </TabsContent>
+              
+              <TabsContent value="booking" className="p-0">
+                <div className="p-4">
+                  <h3 className="text-xl font-bold text-charcoal mb-2">
+                    {language === 'es' ? 'Reserva una consulta personalizada' : 'Book a personalized consultation'}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {language === 'es' 
+                      ? 'Selecciona la fecha y hora que mejor te convenga para nuestra reunión.' 
+                      : 'Select the date and time that works best for you for our meeting.'}
+                  </p>
                 </div>
-                
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem className="mb-6">
-                      <FormLabel className="block text-charcoal font-medium mb-2">
-                        {language === 'es' ? 'Empresa/Organización' : 'Company/Organization'}
-                      </FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder={language === 'es' ? "Nombre de tu empresa" : "Your company name"} 
-                          className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="service"
-                  render={({ field }) => (
-                    <FormItem className="mb-6">
-                      <FormLabel className="block text-charcoal font-medium mb-2">
-                        {language === 'es' ? 'Servicio de interés' : 'Service of interest'}
-                      </FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors">
-                            <SelectValue placeholder={language === 'es' ? "Selecciona un servicio" : "Select a service"} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="consultoria">
-                            {language === 'es' ? 'Consultoría Estratégica' : 'Strategic Consulting'}
-                          </SelectItem>
-                          <SelectItem value="proyectos">
-                            {language === 'es' ? 'Gestión de Proyectos' : 'Project Management'}
-                          </SelectItem>
-                          <SelectItem value="formacion">
-                            {language === 'es' ? 'Formación y Desarrollo' : 'Training and Development'}
-                          </SelectItem>
-                          <SelectItem value="interim">
-                            {language === 'es' ? 'Interim Management' : 'Interim Management'}
-                          </SelectItem>
-                          <SelectItem value="otro">
-                            {language === 'es' ? 'Otro' : 'Other'}
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem className="mb-6">
-                      <FormLabel className="block text-charcoal font-medium mb-2">
-                        {language === 'es' ? 'Mensaje' : 'Message'}
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder={language === 'es' ? "Cuéntame sobre tu proyecto o necesidad" : "Tell me about your project or need"} 
-                          className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-turquoise focus:border-turquoise outline-none transition-colors" 
-                          rows={4} 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="privacy"
-                  render={({ field }) => (
-                    <FormItem className="flex items-start mb-6">
-                      <FormControl>
-                        <Checkbox 
-                          checked={field.value} 
-                          onCheckedChange={field.onChange}
-                          className="mt-1 mr-2" 
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm text-charcoal-light">
-                          {language === 'es' 
-                            ? 'Acepto la política de privacidad y el tratamiento de mis datos para recibir comunicaciones.'
-                            : 'I accept the privacy policy and the processing of my data to receive communications.'}
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
-                    </FormItem>
-                  )}
-                />
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-turquoise hover:bg-turquoise-dark text-white font-medium py-3 rounded transition-colors"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting 
-                    ? (language === 'es' ? 'Enviando...' : 'Sending...') 
-                    : (language === 'es' ? 'Enviar mensaje' : 'Send message')}
-                </Button>
-              </form>
-            </Form>
+                <BookingCalendar />
+              </TabsContent>
+            </Tabs>
           </motion.div>
         </div>
       </div>
