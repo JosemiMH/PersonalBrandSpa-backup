@@ -172,6 +172,15 @@ const Header = () => {
             {t('header.services')}
           </a>
           <a 
+            href="#ai-wellness" 
+            className={`block text-charcoal hover:text-turquoise border-b border-gray-100 active:bg-gray-50 transition-colors ${
+              isMobile ? 'py-2 text-sm' : 'py-3'
+            }`} 
+            onClick={toggleMobileMenu}
+          >
+            {t('header.ai')}
+          </a>
+          <a 
             href="#portfolio" 
             className={`block text-charcoal hover:text-turquoise border-b border-gray-100 active:bg-gray-50 transition-colors ${
               isMobile ? 'py-2 text-sm' : 'py-3'
