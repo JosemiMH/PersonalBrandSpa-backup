@@ -4,6 +4,7 @@ export type Language = 'es' | 'en';
 export type TranslationKey = 
   | 'header.about'
   | 'header.services'
+  | 'header.ai'
   | 'header.portfolio'
   | 'header.testimonials'
   | 'header.blog'
@@ -81,6 +82,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   es: {
     'header.about': 'Sobre mí',
     'header.services': 'Servicios',
+    'header.ai': 'IA para Wellness',
     'header.portfolio': 'Portfolio',
     'header.testimonials': 'Testimonios',
     'header.blog': 'Blog',
@@ -165,6 +167,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   en: {
     'header.about': 'About me',
     'header.services': 'Services',
+    'header.ai': 'AI for Wellness',
     'header.portfolio': 'Portfolio',
     'header.testimonials': 'Testimonials',
     'header.blog': 'Blog',

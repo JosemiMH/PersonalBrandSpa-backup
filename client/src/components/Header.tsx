@@ -88,6 +88,14 @@ const Header = () => {
                   {t('header.services')}
                 </a>
                 <a 
+                  href="#ai-wellness" 
+                  className={`text-charcoal hover:text-turquoise transition-colors ${
+                    isTablet ? 'text-xs px-2' : 'text-sm px-3'
+                  }`}
+                >
+                  {t('header.ai')}
+                </a>
+                <a 
                   href="#portfolio" 
                   className={`text-charcoal hover:text-turquoise transition-colors ${
                     isTablet ? 'text-xs px-2' : 'text-sm px-3'

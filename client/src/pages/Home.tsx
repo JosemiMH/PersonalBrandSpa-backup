@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import AIWellness from "@/components/AIWellness";
 import CallToAction from "@/components/CallToAction";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
@@ -76,6 +77,9 @@ const Home = () => {
       </section>
       <section id="services">
         <Services />
+      </section>
+      <section id="ai-wellness">
+        <AIWellness />
       </section>
       <section id="cta">
         <CallToAction />
