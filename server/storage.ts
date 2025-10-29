@@ -5,6 +5,9 @@ import { appointments, type Appointment, type InsertAppointment } from "@shared/
 import { db } from "./db";
 import { eq, sql } from "drizzle-orm";
 
+// Check if database is available
+const isDatabaseAvailable = db !== null;
+
 // Define storage interface for CRUD operations
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -26,27 +29,38 @@ export interface IStorage {
   getAvailableSlots(date: Date): Promise<{start: Date; end: Date;}[]>;
 }
 
+// Helper to throw error if database not available
+function ensureDb() {
+  if (!isDatabaseAvailable) {
+    throw new Error("Database is not configured. Please set DATABASE_URL environment variable.");
+  }
+}
+
 // Database storage implementation
 export class DatabaseStorage implements IStorage {
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
+    ensureDb();
+    const [user] = await db!.select().from(users).where(eq(users.id, id));
     return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
+    ensureDb();
+    const [user] = await db!.select().from(users).where(eq(users.username, username));
     return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db.insert(users).values(insertUser).returning();
+    ensureDb();
+    const [user] = await db!.insert(users).values(insertUser).returning();
     return user;
   }
   
   // Contact methods
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    const [contact] = await db.insert(contacts).values({
+    ensureDb();
+    const [contact] = await db!.insert(contacts).values({
       name: insertContact.name,
       email: insertContact.email,
       company: insertContact.company || null,
@@ -59,13 +73,15 @@ export class DatabaseStorage implements IStorage {
   }
   
   async getAllContacts(): Promise<Contact[]> {
-    return await db.select().from(contacts);
+    ensureDb();
+    return await db!.select().from(contacts);
   }
   
   // Newsletter methods
   async createNewsletterSubscription(insertNewsletter: InsertNewsletter): Promise<Newsletter> {
+    ensureDb();
     // Check if email already exists
-    const [existingSubscription] = await db.select()
+    const [existingSubscription] = await db!.select()
       .from(newsletters)
       .where(eq(newsletters.email, insertNewsletter.email));
     
@@ -73,7 +89,7 @@ export class DatabaseStorage implements IStorage {
       return existingSubscription;
     }
     
-    const [subscription] = await db.insert(newsletters)
+    const [subscription] = await db!.insert(newsletters)
       .values(insertNewsletter)
       .returning();
       
@@ -81,12 +97,14 @@ export class DatabaseStorage implements IStorage {
   }
   
   async getAllNewsletterSubscriptions(): Promise<Newsletter[]> {
-    return await db.select().from(newsletters);
+    ensureDb();
+    return await db!.select().from(newsletters);
   }
   
   // Appointment methods
   async createAppointment(insertAppointment: InsertAppointment): Promise<Appointment> {
-    const [appointment] = await db.insert(appointments).values({
+    ensureDb();
+    const [appointment] = await db!.insert(appointments).values({
       name: insertAppointment.name,
       email: insertAppointment.email,
       phone: insertAppointment.phone || null,
@@ -102,15 +120,18 @@ export class DatabaseStorage implements IStorage {
   }
   
   async getAppointmentById(id: number): Promise<Appointment | undefined> {
-    const [appointment] = await db.select().from(appointments).where(eq(appointments.id, id));
+    ensureDb();
+    const [appointment] = await db!.select().from(appointments).where(eq(appointments.id, id));
     return appointment;
   }
   
   async getAllAppointments(): Promise<Appointment[]> {
-    return await db.select().from(appointments);
+    ensureDb();
+    return await db!.select().from(appointments);
   }
   
   async getAppointmentsByDate(date: Date): Promise<Appointment[]> {
+    ensureDb();
     // Obtener todas las citas para una fecha específica (ignora la hora)
     const startOfDay = new Date(date);
     startOfDay.setHours(0, 0, 0, 0);
@@ -118,7 +139,7 @@ export class DatabaseStorage implements IStorage {
     const endOfDay = new Date(date);
     endOfDay.setHours(23, 59, 59, 999);
     
-    const result = await db.select()
+    const result = await db!.select()
       .from(appointments)
       .where(
         sql`${appointments.date} >= ${startOfDay} AND ${appointments.date} <= ${endOfDay}`
@@ -128,7 +149,8 @@ export class DatabaseStorage implements IStorage {
   }
   
   async updateAppointmentStatus(id: number, status: string): Promise<Appointment | undefined> {
-    const [appointment] = await db.update(appointments)
+    ensureDb();
+    const [appointment] = await db!.update(appointments)
       .set({ status })
       .where(eq(appointments.id, id))
       .returning();

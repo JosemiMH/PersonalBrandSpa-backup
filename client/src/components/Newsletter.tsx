@@ -36,7 +36,11 @@ const Newsletter = () => {
     setIsSubmitting(true);
     
     try {
-      await apiRequest('POST', '/api/newsletter', data);
+      await apiRequest({
+        path: '/api/newsletter',
+        method: 'POST',
+        body: data
+      });
       
       toast({
         title: language === 'es' ? "Suscripción exitosa" : "Successful subscription",

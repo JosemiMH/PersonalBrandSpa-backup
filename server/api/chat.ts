@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import OpenAI from 'openai';
 
-// Inicializar la API de OpenAI
+// Inicializar la API de OpenAI solo si está configurada
 // Nota: Deberás añadir tu OPENAI_API_KEY como variable de entorno
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = process.env.OPENAI_API_KEY 
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null;
 
 // Información contextual sobre Eva Pérez y sus servicios
 const contextInfo = `
@@ -90,6 +90,14 @@ El retorno de inversión (ROI) de una adecuada gestión wellness se refleja en:
 
 export async function handleChatRequest(req: Request, res: Response) {
   try {
+    // Check if OpenAI is configured
+    if (!openai) {
+      return res.status(503).json({ 
+        error: 'Chat service is not available',
+        message: 'OpenAI API key is not configured. Please configure OPENAI_API_KEY environment variable.' 
+      });
+    }
+
     const { messages } = req.body;
 
     // Validar que se recibieron los mensajes
@@ -144,7 +152,7 @@ export async function handleChatRequest(req: Request, res: Response) {
     };
 
     // Obtener la respuesta de la API de OpenAI
-    const chatCompletion = await openai.chat.completions.create({
+    const chatCompletion = await openai!.chat.completions.create({
       model: "gpt-4o", // El modelo más reciente de OpenAI
       messages: [systemMessage, ...messages],
       max_tokens: 500,
