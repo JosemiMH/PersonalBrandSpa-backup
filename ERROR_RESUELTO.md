@@ -140,3 +140,6 @@ El archivo `iniciar-servidor.ps1` incluye verificación automática.
 
 *Error resuelto el 24 de enero de 2025*
 
+
+
+
