@@ -1,6 +1,42 @@
-node_modules
-dist
+# OS / IDE
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node / JS / Vite
+node_modules/
+dist/
+build/
+.vite/
+.cache/
+coverage/
+**/dist/
+**/.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# Entornos
+.env
+.env.*
+*.local
+
+# Tests / snapshots
+.snapshots/
+
+# Python (vi .venv en tu proyecto)
+.venv/
+__pycache__/
+*.pyc
+
+# Replit / otros
+.replit
